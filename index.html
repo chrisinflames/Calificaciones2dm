@@ -64,6 +64,42 @@ const codigo = document.getElementById("inputCodigo").value.trim();
 const btn = document.getElementById("btnBuscar");
 const alerta = document.getElementById("mensajeAlerta");
 const tarjeta = document.getElementById("tarjetaResultado");
-</script>
+alerta.style.display = "none";
+      tarjeta.style.display = "none";
+
+      if (!codigo) {
+        alerta.textContent = "Por favor, escribe tu código antes de buscar.";
+        alerta.style.display = "block";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Buscando...";
+
+      try {
+        const respuesta = await fetch(`${API_URL}?codigo=${encodeURIComponent(codigo)}`);
+        const datos = await respuesta.json();
+
+        if (datos.encontrado) {
+          document.getElementById("resNombre").textContent = datos.nombre;
+          document.getElementById("resGrado").textContent = datos.grado;
+          document.getElementById("resGrupo").textContent = datos.grupo;
+          document.getElementById("resTurno").textContent = datos.turno;
+          document.getElementById("resCalificacion").textContent = datos.calificacion;
+          tarjeta.style.display = "block";
+        } else {
+          alerta.textContent = "No se encontró ningún registro con ese código.";
+          alerta.style.display = "block";
+        }
+      } catch (error) {
+        alerta.textContent = "Error de conexión. Intenta nuevamente.";
+        alerta.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Buscar";
+      }
+    }
+  </script>
 </body>
-</html>  
+</html>
+ 
