@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.77">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    span.s1 {font: 12.0px Helvetica}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="es"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;title&gt;Consulta de Calificaciones&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1">* { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",</p>
+<p class="p1">Roboto, Arial, sans-serif; }</p>
+<p class="p2"><br></p>
+<p class="p1">body { margin: 0; padding: 20px 15px; background-color: #f0f2f5; display: flex; flex-</p>
+<p class="p1">direction: column; align-items: center; min-height: 100vh; }</p>
+<p class="p2"><br></p>
+<p class="p1">.logo-container { margin-bottom: 20px; text-align: center; }</p>
+<p class="p1">.logo-container img { max-width: 180px; border-radius: 8px; }</p>
+<p class="p1">.main-card { background: #ffffff; width: 100%; max-width: 420px; border-radius: 14px;</p>
+<p class="p1">padding: 24px 20px; border: 1px solid #e2e8f0; }</p>
+<p class="p2"><br></p>
+<p class="p1">h1 { font-size: 1.25rem; color: #1f2937; text-align: center; margin: 0 0 18px 0; line-</p>
+<p class="p1">height: 1.35; }</p>
+<p class="p2"><br></p>
+<p class="p1">input[type="text"] { width: 100%; padding: 13px 14px; font-size: 1rem; border: 1px solid</p>
+<p class="p1">#d1d5db; border-radius: 8px; margin-bottom: 14px; outline: none; }</p>
+<p class="p1">input[type="text"]:focus { border-color: #1d6ce0; }</p>
+<p class="p1">button { width: 100%; padding: 13px; font-size: 1rem; font-weight: 600; color: #ffffff;</p>
+<p class="p1">background-color: #1d6ce0; border: none; border-radius: 8px; cursor: pointer; }</p>
+<p class="p1">button:disabled { background-color: #93c5fd; }</p>
+<p class="p1">.alerta { margin-top: 16px; padding: 14px; background-color: #e5e7eb; color: #374151;</p>
+<p class="p1">border-radius: 8px; text-align: center; font-size: 0.95rem; display: none; }</p>
+<p class="p1">.tarjeta-resultado { margin-top: 18px; background-color: #d9f2fa; border: 1px solid</p>
+<p class="p1">#bae6fd; border-radius: 10px; padding: 18px 16px; color: #1f2937; display: none; }</p>
+<p class="p1">.nombre-alumno { color: #0277bd; font-weight: 700; font-size: 1.05rem; text-align:</p>
+<p class="p1">center; text-transform: uppercase; margin-bottom: 14px; line-height: 1.3; }</p>
+<p class="p1">.dato-linea { font-size: 0.95rem; margin-bottom: 9px; line-height: 1.4; color: #263238;</p>
+<p class="p1">}</p>
+<p class="p1">.dato-calificacion { margin-top: 14px; padding-top: 10px; border-top: 1px solid #b3e5fc;</p>
+<p class="p1">font-size: 1.05rem; color: #0277bd; }</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;div class="logo-container"&gt;&lt;img src="logo.png" alt="Logo Escuela"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div class="main-card"&gt;</p>
+<p class="p1">&lt;h1&gt;Consulta de Calificaciones por Código&lt;/h1&gt;</p>
+<p class="p1">&lt;input type="text" id="inputCodigo" placeholder="Ingresa tu código de alumno"</p>
+<p class="p1">autocomplete="off"&gt;</p>
+<p class="p1">&lt;button id="btnBuscar" onclick="buscarAlumno()"&gt;Buscar&lt;/button&gt;</p>
+<p class="p1">&lt;div id="mensajeAlerta" class="alerta"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div id="tarjetaResultado" class="tarjeta-resultado"&gt;</p>
+<p class="p1">&lt;div class="nombre-alumno" id="resNombre"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div class="dato-linea"&gt;&lt;strong&gt;Grado:&lt;/strong&gt; &lt;span id="resGrado"&gt;&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div class="dato-linea"&gt;&lt;strong&gt;Grupo:&lt;/strong&gt; &lt;span id="resGrupo"&gt;&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div class="dato-linea"&gt;&lt;strong&gt;Turno:&lt;/strong&gt; &lt;span id="resTurno"&gt;&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div class="dato-linea dato-calificacion"&gt;&lt;strong&gt;Calificación:&lt;/strong&gt; &lt;span</p>
+<p class="p1">id="resCalificacion"&gt;&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p3"><span class="s1">const API_URL = "</span>https://script.google.com/a/macros/academicos.udg.mx/s/AKfycbzEECpD3hy7M0Q1jozhgfwBiqiZZUAcUNXk5SZk0Mb3SOT5qFR9HXzOueo8aNrFJc9-PQ/exec<span class="s1">";</span></p>
+<p class="p1">document.getElementById("inputCodigo").addEventListener("keypress", function(e) {</p>
+<p class="p1">if (e.key === "Enter") buscarAlumno();</p>
+<p class="p1">});</p>
+<p class="p1">async function buscarAlumno() {</p>
+<p class="p1">const codigo = document.getElementById("inputCodigo").value.trim();</p>
+<p class="p1">const btn = document.getElementById("btnBuscar");</p>
+<p class="p1">const alerta = document.getElementById("mensajeAlerta");</p>
+<p class="p1">const tarjeta = document.getElementById("tarjetaResultado");</p>
+</body>
+</html>
